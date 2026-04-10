@@ -40,11 +40,6 @@ npm install
 npm run dev        # starts on http://localhost:5173
 ```
 
-### Demo Credentials
-- Email: *(set in your `.env` or Supabase seed)*
-- Password: *(set during registration)*
-- Username: *(chosen at sign-up)*
-
 ---
 
 ## Admin Dashboard (`ADMIN DASHBOARD/`)
