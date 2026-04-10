@@ -1,0 +1,15 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+@import 'leaflet/dist/leaflet.css';
+
+/* Dashboard specific styles */
+@layer components {
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(152, 100%, 33%), hsl(152, 60%, 25%));
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-xl bg-card/80 border border-border/50 shadow-lg;
+  }
+}
