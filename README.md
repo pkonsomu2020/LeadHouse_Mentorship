@@ -41,9 +41,9 @@ npm run dev        # starts on http://localhost:5173
 ```
 
 ### Demo Credentials
-- Email: `demo@leadhouse.co.ke`
-- Password: `LeadHouse2026`
-- Username: `ShadowEagle`
+- Email: *(set in your `.env` or Supabase seed)*
+- Password: *(set during registration)*
+- Username: *(chosen at sign-up)*
 
 ---
 
@@ -75,8 +75,8 @@ npm run dev        # starts on http://localhost:8080
 ```
 
 ### Admin Credentials
-- Email: `admin@leadhouse.co.ke`
-- Password: `Leadhouse@2026!`
+- Email: *(set via `ADMIN_EMAIL` environment variable)*
+- Password: *(set via `ADMIN_PASSWORD` environment variable)*
 
 ---
 
