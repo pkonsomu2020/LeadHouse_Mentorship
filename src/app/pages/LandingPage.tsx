@@ -148,19 +148,19 @@ export function LandingPage() {
     <div className="overflow-hidden">
 
       {/* â•â•â• HERO â•â•â• */}
-      <section id="hero" className="relative bg-white dark:bg-gray-950 overflow-hidden min-h-[92vh] flex items-center pt-24">
+      <section id="hero" className="relative bg-white dark:bg-gray-950 overflow-hidden min-h-[92vh] flex items-center pt-20">
         {/* Subtle green tint blobs */}
-        <div className="absolute top-20 right-10 w-96 h-96 bg-[#00A651]/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-64 h-64 bg-[#00A651]/6 rounded-full blur-2xl" />
+        <div className="absolute top-20 right-10 w-96 h-96 bg-[#00A651]/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 left-10 w-64 h-64 bg-[#00A651]/6 rounded-full blur-2xl pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E8F5E9]/60 dark:bg-[#00A651]/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-28 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-28 w-full">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div initial={{opacity:0,x:-50}} animate={{opacity:1,x:0}} transition={{duration:0.8}} className="space-y-6">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-[#006B3C] dark:text-[#00A651]">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-[#006B3C] dark:text-[#00A651] break-words">
                 LeadHouse<br/>Mentorship.
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg">Connect with experienced mentors who will guide you through life challenges, help you build discipline, and unlock your full potential.</p>
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg overflow-wrap-anywhere">Connect with experienced mentors who will guide you through life challenges, help you build discipline, and unlock your full potential.</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/signup">
                   <Button size="lg" className="bg-[#00A651] hover:bg-[#006B3C] text-white text-lg px-8 py-6 shadow-xl font-semibold">
@@ -187,11 +187,11 @@ export function LandingPage() {
               <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#00A651] via-[#006B3C] to-[#2E7D32] shadow-2xl border border-[#00A651]/20">
                 <HeroIllustration />
               </div>
-              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.7}} className="absolute bottom-2 left-2 sm:-bottom-5 sm:-left-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-3 sm:p-4 flex items-center gap-3 border border-gray-100 dark:border-gray-700">
+              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.7}} className="hidden sm:flex absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-3 sm:p-4 items-center gap-3 border border-gray-100 dark:border-gray-700">
                 <div className="w-9 h-9 sm:w-11 sm:h-11 bg-gradient-to-br from-[#00A651] to-[#006B3C] rounded-full flex items-center justify-center shrink-0"><CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" /></div>
                 <div><p className="text-base sm:text-lg font-bold text-[#006B3C] dark:text-[#00A651]">95%</p><p className="text-xs text-gray-500">Success Rate</p></div>
               </motion.div>
-              <motion.div initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}} transition={{delay:0.9}} className="absolute top-2 right-2 sm:-top-5 sm:-right-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-3 sm:p-4 flex items-center gap-3 border border-gray-100 dark:border-gray-700">
+              <motion.div initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}} transition={{delay:0.9}} className="hidden sm:flex absolute -top-5 -right-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-3 sm:p-4 items-center gap-3 border border-gray-100 dark:border-gray-700">
                 <div className="w-9 h-9 sm:w-11 sm:h-11 bg-gradient-to-br from-[#2E7D32] to-[#00A651] rounded-full flex items-center justify-center shrink-0"><MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" /></div>
                 <div><p className="text-xs sm:text-sm font-bold text-[#006B3C] dark:text-[#00A651]">Live Mentoring</p><p className="text-xs text-gray-500">1-on-1 sessions</p></div>
               </motion.div>
@@ -305,8 +305,8 @@ export function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <motion.div initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="space-y-6">
               <SectionLabel text="For Mentees" />
-              <h2 className="text-3xl lg:text-5xl font-extrabold text-[#006B3C] dark:text-[#00A651] break-words">Find Your Path. Build Your Future.</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Connect with experienced mentors who understand your challenges and will guide you toward becoming the man you are meant to be.</p>
+              <h2 className="text-3xl lg:text-5xl font-extrabold text-[#006B3C] dark:text-[#00A651] break-words hyphens-auto">Find Your Path. Build Your Future.</h2>
+              <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Connect with experienced mentors who understand your challenges and will guide you toward becoming the man you are meant to be.</p>
               <div className="space-y-3">
                 {["Anonymous username - discuss anything freely","Matched with mentors in your field of interest","Track goals and progress with your mentor","Access to resource library and challenges","Group discussions and community support"].map(item=>(
                   <div key={item} className="flex items-center gap-3">

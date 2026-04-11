@@ -62,14 +62,14 @@ export default function UserDashboard() {
   return (
     <div className="space-y-6">
       {/* Welcome Banner */}
-      <div className="rounded-2xl gradient-primary p-6 md:p-8 text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      <div className="rounded-2xl gradient-primary p-5 md:p-8 text-primary-foreground relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/20" />
           <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-white/10" />
         </div>
         <div className="relative z-10">
           <p className="text-sm opacity-80 mb-1">Welcome back,</p>
-          <h1 className="text-2xl md:text-3xl font-bold mb-2">{username} 🦅</h1>
+          <h1 className="text-xl md:text-3xl font-bold mb-2 break-words">{username} 🦅</h1>
           <p className="text-sm opacity-80 mb-4">
             {s?.streak ? `Keep going! You're on a ${s.streak}-day streak.` : "Start your journey today!"}
           </p>

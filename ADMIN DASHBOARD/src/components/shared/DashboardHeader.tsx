@@ -112,9 +112,9 @@ export function DashboardHeader({ username = "Admin", role = "admin", onLogout }
   };
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-border/50 bg-background/80 backdrop-blur-xl px-4 md:px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-2 border-b border-border/50 bg-background/80 backdrop-blur-xl px-3 md:px-6 min-w-0 overflow-hidden">
       {/* Desktop Sidebar Trigger */}
-      <SidebarTrigger className="hidden md:flex text-muted-foreground hover:text-foreground" />
+      <SidebarTrigger className="hidden md:flex text-muted-foreground hover:text-foreground shrink-0" />
       
       {/* Mobile Hamburger Menu */}
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -196,7 +196,7 @@ export function DashboardHeader({ username = "Admin", role = "admin", onLogout }
       </Sheet>
 
       {/* Search Bar */}
-      <div ref={searchRef} className="hidden md:flex flex-1 max-w-md relative">
+      <div ref={searchRef} className="hidden md:flex flex-1 max-w-md relative min-w-0">
         <div className="relative w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
           <input
@@ -255,8 +255,8 @@ export function DashboardHeader({ username = "Admin", role = "admin", onLogout }
         )}
       </div>
 
-      {/* Spacer to push items to the right */}
-      <div className="flex-1" />
+      {/* Spacer - desktop only */}
+      <div className="hidden md:flex flex-1" />
 
       {/* Right Side Icons - Always visible */}
       <div className="flex items-center gap-2 ml-auto">
