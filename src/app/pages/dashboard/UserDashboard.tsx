@@ -69,7 +69,7 @@ export default function UserDashboard() {
         </div>
         <div className="relative z-10">
           <p className="text-sm opacity-80 mb-1">Welcome back,</p>
-          <h1 className="text-xl md:text-3xl font-bold mb-2 break-words">{username} 🦅</h1>
+          <h1 className="text-xl md:text-3xl font-bold mb-2 break-words">{username}</h1>
           <p className="text-sm opacity-80 mb-4">
             {s?.streak ? `Keep going! You're on a ${s.streak}-day streak.` : "Start your journey today!"}
           </p>
