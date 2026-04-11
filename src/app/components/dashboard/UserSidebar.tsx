@@ -61,7 +61,7 @@ export function UserSidebar() {
                     <NavLink
                       to={item.url}
                       end={item.url === "/dashboard"}
-                      className="text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground transition-colors"
+                      className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-foreground transition-colors"
                       activeClassName="bg-sidebar-accent text-sidebar-primary font-semibold"
                     >
                       <item.icon className="h-4 w-4" />
@@ -82,7 +82,7 @@ export function UserSidebar() {
               <SidebarMenuButton asChild>
                 <NavLink
                   to={item.url}
-                  className="text-sidebar-foreground/70 hover:bg-destructive/20 hover:text-destructive"
+                  className="text-sidebar-foreground hover:bg-destructive/20 hover:text-destructive"
                   activeClassName=""
                 >
                   <item.icon className="h-4 w-4" />

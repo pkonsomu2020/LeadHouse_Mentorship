@@ -57,7 +57,7 @@ export function AdminSidebar({ onLogout }: { onLogout: () => void }) {
                     <NavLink
                       to={item.url}
                       end={item.url === "/"}
-                      className="text-sidebar-foreground/70 hover:bg-destructive/10 hover:text-destructive transition-colors rounded-lg"
+                      className="text-sidebar-foreground hover:bg-destructive/10 hover:text-destructive transition-colors rounded-lg"
                       activeClassName="bg-destructive/15 text-destructive font-semibold border-l-2 border-destructive"
                     >
                       <item.icon className="h-4 w-4 shrink-0" />
@@ -76,7 +76,7 @@ export function AdminSidebar({ onLogout }: { onLogout: () => void }) {
           <SidebarMenuItem>
             <SidebarMenuButton
               onClick={onLogout}
-              className="text-sidebar-foreground/70 hover:bg-destructive/20 hover:text-destructive cursor-pointer w-full"
+              className="text-sidebar-foreground hover:bg-destructive/20 hover:text-destructive cursor-pointer w-full"
             >
               <LogOut className="h-4 w-4" />
               {!collapsed && <span>Logout</span>}
