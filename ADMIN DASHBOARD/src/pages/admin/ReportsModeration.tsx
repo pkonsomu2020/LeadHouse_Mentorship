@@ -159,7 +159,7 @@ export default function ReportsModeration() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {[
           { label: "Total",         value: stats.total,         icon: "🚩", color: "text-foreground" },
           { label: "Pending",       value: stats.pending,       icon: "⏳", color: "text-yellow-500" },
@@ -226,7 +226,7 @@ export default function ReportsModeration() {
             </div>
 
             <Card className="glass-card">
-              <CardContent className="p-0">
+              <CardContent className="p-0 overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow>

@@ -156,7 +156,7 @@ export default function Notifications() {
 
       {!loading && !error && (
         <Tabs value={tab} onValueChange={setTab}>
-          <TabsList className="bg-muted/50 flex-wrap h-auto gap-1">
+          <TabsList className="bg-muted/50 flex-wrap h-auto gap-1 justify-start">
             {TABS.map(t => (
               <TabsTrigger key={t.value} value={t.value} className="text-xs">
                 {t.label}

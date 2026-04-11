@@ -159,7 +159,7 @@ export default function Sessions() {
                       </div>
                       {s.notes && <p className="text-xs text-muted-foreground mt-1 italic">📝 {s.notes}</p>}
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
                       <Badge className={`text-xs border-0 ${statusCfg[s.status]?.cls}`}>
                         {statusCfg[s.status]?.label}
                       </Badge>

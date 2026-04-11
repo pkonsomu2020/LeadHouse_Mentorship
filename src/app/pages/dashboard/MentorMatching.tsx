@@ -276,7 +276,7 @@ export default function MentorMatching() {
             <MapPin className="h-4 w-4 text-primary" />
             <span>Showing {mentors.length} mentors across Kenya — click a pin to view details</span>
           </div>
-          <div className="w-full rounded-xl overflow-hidden border border-border/50 shadow-lg" style={{ height: 500 }}>
+          <div className="w-full rounded-xl overflow-hidden border border-border/50 shadow-lg" style={{ height: "min(500px, 60vh)" }}>
             <MentorMap
               mentors={mentors}
               matchStatuses={matchStatuses}

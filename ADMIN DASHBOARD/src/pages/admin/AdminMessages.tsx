@@ -181,10 +181,8 @@ export default function AdminMessages() {
 
       <div className="flex flex-1 overflow-hidden rounded-2xl border border-border shadow-sm">
 
-        {/* ═══════════════════════════════════════
-            LEFT PANEL — conversation / user list
-            ═══════════════════════════════════════ */}
-        <div className="w-[300px] shrink-0 flex flex-col border-r border-border bg-white dark:bg-card">
+        {/* LEFT PANEL */}
+        <div className={`${chat ? "hidden md:flex" : "flex"} w-full md:w-[300px] shrink-0 flex-col border-r border-border bg-white dark:bg-card`}>
 
           {/* Tabs */}
           <div className="flex border-b border-border shrink-0">
@@ -287,11 +285,9 @@ export default function AdminMessages() {
           </div>
         </div>
 
-        {/* ═══════════════════════════════════════
-            RIGHT PANEL — chat window
-            ═══════════════════════════════════════ */}
+        {/* RIGHT PANEL — chat window */}
         {!chat ? (
-          <div className="flex-1 flex flex-col items-center justify-center bg-gray-50 dark:bg-muted/10 gap-3">
+          <div className={`${chat === null ? "hidden md:flex" : "flex"} flex-1 flex-col items-center justify-center bg-gray-50 dark:bg-muted/10 gap-3`}>
             <div className="h-16 w-16 rounded-full bg-gray-100 dark:bg-muted flex items-center justify-center">
               <MessageSquare className="h-7 w-7 text-gray-300" />
             </div>
@@ -299,10 +295,13 @@ export default function AdminMessages() {
             <p className="text-sm text-gray-400">or pick a user from the Users tab</p>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col min-w-0">
-
-            {/* Chat header */}
-            <div className="flex items-center gap-3 px-5 py-3 border-b border-border bg-white dark:bg-card shrink-0">
+          <div className="flex flex-1 flex-col min-w-0">
+            {/* Chat header with back button on mobile */}
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-white dark:bg-card shrink-0">
+              <button onClick={() => setChat(null)}
+                className="md:hidden p-1.5 rounded-lg hover:bg-muted transition-colors text-muted-foreground shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              </button>
               <Avatar className="h-10 w-10 shrink-0">
                 <AvatarFallback className={`text-sm font-bold ${avatarCls(chat.role)}`}>
                   {chat.role === "admin" ? <Shield className="h-4 w-4" /> : ini(chat.name)}

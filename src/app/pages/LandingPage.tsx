@@ -187,13 +187,13 @@ export function LandingPage() {
               <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#00A651] via-[#006B3C] to-[#2E7D32] shadow-2xl border border-[#00A651]/20">
                 <HeroIllustration />
               </div>
-              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.7}} className="absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-4 flex items-center gap-3 border border-gray-100 dark:border-gray-700">
-                <div className="w-11 h-11 bg-gradient-to-br from-[#00A651] to-[#006B3C] rounded-full flex items-center justify-center shrink-0"><CheckCircle2 className="w-6 h-6 text-white" /></div>
-                <div><p className="text-lg font-bold text-[#006B3C] dark:text-[#00A651]">95%</p><p className="text-xs text-gray-500">Success Rate</p></div>
+              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.7}} className="absolute bottom-2 left-2 sm:-bottom-5 sm:-left-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-3 sm:p-4 flex items-center gap-3 border border-gray-100 dark:border-gray-700">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-gradient-to-br from-[#00A651] to-[#006B3C] rounded-full flex items-center justify-center shrink-0"><CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" /></div>
+                <div><p className="text-base sm:text-lg font-bold text-[#006B3C] dark:text-[#00A651]">95%</p><p className="text-xs text-gray-500">Success Rate</p></div>
               </motion.div>
-              <motion.div initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}} transition={{delay:0.9}} className="absolute -top-5 -right-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-4 flex items-center gap-3 border border-gray-100 dark:border-gray-700">
-                <div className="w-11 h-11 bg-gradient-to-br from-[#2E7D32] to-[#00A651] rounded-full flex items-center justify-center shrink-0"><MessageCircle className="w-6 h-6 text-white" /></div>
-                <div><p className="text-sm font-bold text-[#006B3C] dark:text-[#00A651]">Live Mentoring</p><p className="text-xs text-gray-500">1-on-1 sessions</p></div>
+              <motion.div initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}} transition={{delay:0.9}} className="absolute top-2 right-2 sm:-top-5 sm:-right-5 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-3 sm:p-4 flex items-center gap-3 border border-gray-100 dark:border-gray-700">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-gradient-to-br from-[#2E7D32] to-[#00A651] rounded-full flex items-center justify-center shrink-0"><MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" /></div>
+                <div><p className="text-xs sm:text-sm font-bold text-[#006B3C] dark:text-[#00A651]">Live Mentoring</p><p className="text-xs text-gray-500">1-on-1 sessions</p></div>
               </motion.div>
             </motion.div>
           </div>
@@ -305,7 +305,7 @@ export function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <motion.div initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="space-y-6">
               <SectionLabel text="For Mentees" />
-              <h2 className="text-3xl lg:text-5xl font-extrabold text-[#006B3C] dark:text-[#00A651]">Find Your Path. Build Your Future.</h2>
+              <h2 className="text-3xl lg:text-5xl font-extrabold text-[#006B3C] dark:text-[#00A651] break-words">Find Your Path. Build Your Future.</h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">Connect with experienced mentors who understand your challenges and will guide you toward becoming the man you are meant to be.</p>
               <div className="space-y-3">
                 {["Anonymous username - discuss anything freely","Matched with mentors in your field of interest","Track goals and progress with your mentor","Access to resource library and challenges","Group discussions and community support"].map(item=>(

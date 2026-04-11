@@ -62,6 +62,7 @@ export default function Messages() {
   const [attachFile,     setAttachFile]     = useState<File | null>(null);
   const [attachPreview,  setAttachPreview]  = useState<string | null>(null);
   const [uploading,      setUploading]      = useState(false);
+  const [showSidebar,    setShowSidebar]    = useState(true);
   const bottomRef   = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -96,6 +97,7 @@ export default function Messages() {
 
   async function openChat(convo: Conversation) {
     setActiveConvo(convo);
+    setShowSidebar(false); // hide sidebar on mobile when chat opens
     setMsgLoading(true);
     try {
       const res  = await fetch(`${API}/api/messages/${convo.userId}`, { headers });
@@ -189,7 +191,7 @@ export default function Messages() {
 
       <div className="flex flex-1 overflow-hidden rounded-2xl border border-border/50 shadow-sm bg-background">
         {/* ── Sidebar ── */}
-        <div className="w-[280px] shrink-0 flex flex-col border-r border-border/50 bg-muted/20">
+        <div className={`${showSidebar ? "flex" : "hidden"} md:flex w-full md:w-[280px] shrink-0 flex-col border-r border-border/50 bg-muted/20`}>
           <div className="p-4 border-b border-border/50">
             <p className="font-semibold text-sm">Conversations</p>
           </div>
@@ -263,7 +265,7 @@ export default function Messages() {
 
         {/* ── Chat area ── */}
         {!activeConvo ? (
-          <div className="flex-1 flex items-center justify-center text-muted-foreground bg-muted/10">
+          <div className={`${showSidebar ? "hidden md:flex" : "flex"} flex-1 items-center justify-center text-muted-foreground bg-muted/10`}>
             <div className="text-center space-y-2">
               <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center mx-auto">
                 <Send className="h-7 w-7 opacity-30" />
@@ -283,9 +285,17 @@ export default function Messages() {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+          <div className={`${showSidebar ? "hidden md:flex" : "flex"} flex-1 flex-col min-w-0 overflow-hidden`}>
             {/* Chat header */}
             <div className="flex items-center gap-3 px-4 py-3 border-b border-border/50 bg-card shrink-0 z-10">
+              {/* Back button — mobile only */}
+              <button
+                onClick={() => setShowSidebar(true)}
+                className="md:hidden p-1.5 rounded-lg hover:bg-muted transition-colors text-muted-foreground shrink-0"
+                aria-label="Back to conversations"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              </button>
               <Avatar className="h-10 w-10 shrink-0">
                 <AvatarFallback className={`text-sm font-bold ${activeConvo.role === "admin" ? "bg-red-100 text-red-700" : "bg-emerald-500 text-white"}`}>
                   {activeConvo.role === "admin" ? <Shield className="h-4 w-4" /> : initials(activeConvo.username)}

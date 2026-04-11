@@ -163,7 +163,7 @@ export default function CommunityManagement() {
           <h1 className="text-2xl font-bold">Community Management</h1>
           <p className="text-muted-foreground text-sm mt-1">Manage peer groups, discussions, and events</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <Button className="gradient-primary text-primary-foreground" size="sm" onClick={() => { setEditEvent(null); setEventForm(EMPTY_EVENT); setEventOpen(true); }}>
             <Plus className="h-4 w-4 mr-1" /> New Event
           </Button>

@@ -43,8 +43,6 @@ export function Navigation() {
     const y = window.scrollY;
     setAtTop(y < 20);
     setShowBack(y > 400);
-
-    // Hide on scroll down, show on scroll up
     if (y > lastY[0] && y > 80) {
       setVisible(false);
       setIsOpen(false);
@@ -52,8 +50,6 @@ export function Navigation() {
       setVisible(true);
     }
     lastY[0] = y;
-
-    // Track active section
     if (isLanding) {
       const sections = navItems.map(n => document.getElementById(n.anchor));
       const current = sections.findLast(s => s && s.getBoundingClientRect().top <= 120);
@@ -76,14 +72,9 @@ export function Navigation() {
     setIsOpen(false);
   }
 
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
   return (
     <>
-      {/* ── Floating pill navbar ── */}
-      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-3 pointer-events-none">
         <AnimatePresence>
           {visible && (
             <motion.div
@@ -94,7 +85,7 @@ export function Navigation() {
               className="pointer-events-auto w-full max-w-5xl"
             >
               {/* Pill container */}
-              <div className={`flex items-center justify-between gap-2 px-4 py-2.5 rounded-2xl border transition-all duration-300 ${
+              <div className={`flex items-center justify-between gap-2 px-3 py-2 rounded-2xl border transition-all duration-300 ${
                 atTop
                   ? "bg-white/80 dark:bg-gray-950/80 border-gray-200/60 dark:border-gray-700/60 backdrop-blur-xl shadow-lg"
                   : "bg-white/95 dark:bg-gray-950/95 border-gray-200 dark:border-gray-700 backdrop-blur-xl shadow-xl"
@@ -102,18 +93,18 @@ export function Navigation() {
 
                 {/* Logo */}
                 <button onClick={() => scrollTo("hero")} className="flex items-center shrink-0">
-                  <div className="w-9 h-9 bg-gradient-to-br from-[#00A651] to-[#006B3C] rounded-xl flex items-center justify-center shadow-md">
-                    <span className="text-white font-bold text-base">LH</span>
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#00A651] to-[#006B3C] rounded-xl flex items-center justify-center shadow-md">
+                    <span className="text-white font-bold text-sm">LH</span>
                   </div>
                 </button>
 
-                {/* Desktop nav items */}
-                <div className="hidden md:flex items-center gap-1">
+                {/* Desktop nav — only show on lg+ to avoid cramping on tablets */}
+                <div className="hidden lg:flex items-center gap-0.5">
                   {navItems.map(item => (
                     <button
                       key={item.anchor}
                       onClick={() => scrollTo(item.anchor)}
-                      className={`px-3.5 py-1.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                      className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 whitespace-nowrap ${
                         isLanding && active === item.anchor
                           ? "bg-[#00A651] text-white shadow-md"
                           : "text-gray-600 dark:text-gray-300 hover:bg-[#E8F5E9] dark:hover:bg-[#00A651]/15 hover:text-[#006B3C] dark:hover:text-[#00A651]"
@@ -125,29 +116,30 @@ export function Navigation() {
                 </div>
 
                 {/* Right side */}
-                <div className="flex items-center gap-1.5 shrink-0">
+                <div className="flex items-center gap-1 shrink-0">
                   <ThemeToggle />
-                  <Link to="/login" className="hidden sm:block">
-                    <Button variant="outline" size="sm" className="border-[#00A651] text-[#00A651] hover:bg-[#E8F5E9] dark:border-[#00A651] dark:text-[#00A651] dark:hover:bg-[#00A651]/10 text-xs px-3">
+                  <Link to="/login" className="hidden lg:block">
+                    <Button variant="outline" size="sm" className="border-[#00A651] text-[#00A651] hover:bg-[#E8F5E9] dark:border-[#00A651] dark:text-[#00A651] dark:hover:bg-[#00A651]/10 text-xs px-3 h-8">
                       Sign In
                     </Button>
                   </Link>
-                  <Link to="/signup" className="hidden sm:block">
-                    <Button size="sm" className="bg-[#00A651] hover:bg-[#006B3C] text-white shadow-md text-xs px-3">
+                  <Link to="/signup" className="hidden lg:block">
+                    <Button size="sm" className="bg-[#00A651] hover:bg-[#006B3C] text-white shadow-md text-xs px-3 h-8">
                       Get Started
                     </Button>
                   </Link>
-                  {/* Mobile hamburger */}
+                  {/* Hamburger — visible on mobile & tablet */}
                   <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-700 dark:text-gray-300"
+                    className="lg:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-700 dark:text-gray-300"
+                    aria-label="Toggle menu"
                   >
                     {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
 
-              {/* Mobile dropdown */}
+              {/* Mobile/tablet dropdown */}
               <AnimatePresence>
                 {isOpen && (
                   <motion.div
@@ -155,14 +147,14 @@ export function Navigation() {
                     animate={{ opacity: 1, y: 0,  scale: 1 }}
                     exit={{   opacity: 0, y: -8, scale: 0.97 }}
                     transition={{ duration: 0.2 }}
-                    className="mt-2 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden"
+                    className="mt-2 bg-white/98 dark:bg-gray-950/98 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden"
                   >
                     <div className="p-3 space-y-1">
                       {navItems.map(item => (
                         <button
                           key={item.anchor}
                           onClick={() => scrollTo(item.anchor)}
-                          className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                          className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                             isLanding && active === item.anchor
                               ? "bg-[#00A651] text-white"
                               : "text-gray-700 dark:text-gray-300 hover:bg-[#E8F5E9] dark:hover:bg-[#00A651]/15 hover:text-[#006B3C] dark:hover:text-[#00A651]"
@@ -173,10 +165,10 @@ export function Navigation() {
                       ))}
                       <div className="flex gap-2 pt-2 border-t border-gray-100 dark:border-gray-800 mt-1">
                         <Link to="/login" className="flex-1" onClick={() => setIsOpen(false)}>
-                          <Button variant="outline" className="w-full border-[#00A651] text-[#00A651] text-sm">Sign In</Button>
+                          <Button variant="outline" className="w-full border-[#00A651] text-[#00A651] text-sm h-11">Sign In</Button>
                         </Link>
                         <Link to="/signup" className="flex-1" onClick={() => setIsOpen(false)}>
-                          <Button className="w-full bg-[#00A651] hover:bg-[#006B3C] text-white text-sm">Get Started</Button>
+                          <Button className="w-full bg-[#00A651] hover:bg-[#006B3C] text-white text-sm h-11">Get Started</Button>
                         </Link>
                       </div>
                     </div>
@@ -188,7 +180,7 @@ export function Navigation() {
         </AnimatePresence>
       </div>
 
-      {/* ── Scroll to top button ── */}
+      {/* Scroll to top */}
       <AnimatePresence>
         {showBack && (
           <motion.button
@@ -196,11 +188,11 @@ export function Navigation() {
             animate={{ opacity: 1, scale: 1,   y: 0 }}
             exit={{   opacity: 0, scale: 0.5, y: 20 }}
             transition={{ duration: 0.3, ease: "backOut" }}
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-6 z-50 w-12 h-12 bg-[#00A651] hover:bg-[#006B3C] text-white rounded-full shadow-xl flex items-center justify-center transition-colors group"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-6 right-4 z-50 w-11 h-11 bg-[#00A651] hover:bg-[#006B3C] text-white rounded-full shadow-xl flex items-center justify-center transition-colors"
             aria-label="Scroll to top"
           >
-            <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUp className="w-5 h-5" />
           </motion.button>
         )}
       </AnimatePresence>
