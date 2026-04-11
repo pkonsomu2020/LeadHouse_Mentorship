@@ -38,6 +38,33 @@ async function findUserByEmail(email) {
 }
 
 // ─────────────────────────────────────────
+// GET /api/auth/check-username?username=xxx
+// Real-time username availability check
+// ─────────────────────────────────────────
+router.get('/check-username', async (req, res) => {
+  const { username } = req.query;
+  if (!username || typeof username !== 'string' || username.trim().length < 3) {
+    return res.json({ available: false, message: 'Username must be at least 3 characters' });
+  }
+  const u = username.trim();
+  if (!/^[a-zA-Z0-9_-]+$/.test(u)) {
+    return res.json({ available: false, message: 'Only letters, numbers, underscores and hyphens allowed' });
+  }
+  try {
+    const [{ data: uExist }, { data: mExist }] = await Promise.all([
+      supabaseAdmin.from('users').select('id').eq('username', u).maybeSingle(),
+      supabaseAdmin.from('mentors').select('id').eq('display_name', u).maybeSingle(),
+    ]);
+    if (uExist || mExist) {
+      return res.json({ available: false, message: 'Username already taken' });
+    }
+    return res.json({ available: true, message: 'Username is available' });
+  } catch (err) {
+    return res.status(500).json({ available: false, message: 'Could not check username' });
+  }
+});
+
+// ─────────────────────────────────────────
 // POST /api/auth/register
 // role = 'mentee' → users table
 // role = 'mentor' → mentors table
