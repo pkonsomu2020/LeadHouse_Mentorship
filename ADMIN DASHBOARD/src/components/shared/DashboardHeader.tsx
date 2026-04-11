@@ -157,8 +157,8 @@ export function DashboardHeader({ username = "Admin", role = "admin", onLogout }
                       onClick={() => handleNavigation(item.url)}
                       className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-colors ${
                         isActive
-                          ? "bg-[#E8F5E9] text-[#006B3C] font-semibold"
-                          : "hover:bg-gray-100 text-gray-700"
+                          ? "bg-[#E8F5E9] text-[#006B3C] dark:bg-[#00A651]/20 dark:text-[#00A651] font-semibold"
+                          : "text-foreground hover:bg-accent hover:text-accent-foreground"
                       }`}
                     >
                       <Icon className="h-5 w-5 shrink-0" />
@@ -175,8 +175,8 @@ export function DashboardHeader({ username = "Admin", role = "admin", onLogout }
                 onClick={() => handleNavigation("/settings")}
                 className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-colors ${
                   location.pathname === "/settings"
-                    ? "bg-[#E8F5E9] text-[#006B3C] font-semibold"
-                    : "hover:bg-gray-100 text-gray-700"
+                    ? "bg-[#E8F5E9] text-[#006B3C] dark:bg-[#00A651]/20 dark:text-[#00A651] font-semibold"
+                    : "text-foreground hover:bg-accent hover:text-accent-foreground"
                 }`}
               >
                 <Settings className="h-5 w-5 shrink-0" />
